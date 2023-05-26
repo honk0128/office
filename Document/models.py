@@ -17,7 +17,6 @@ class Document(models.Model):
     Doc_Receiver = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, related_name="Doc_Reciever")
     Doc_Title = models.CharField(max_length = 50)
     Doc_Type = models.IntegerField()
-    Doc_Files = models.ForeignKey(File, on_delete=models.CASCADE, null = True)
     Doc_State = models.IntegerField()
 
     def __str__(self):

@@ -13,6 +13,8 @@ from email.mime.text import MIMEText
 from Document import models as Document
 from Mail import models as Mail
 from Emp import models as Emp
+from Document.models import File
+from Emp.models import Employee, Department
 
 def findUser(request):
     return Emp.Employee.objects.get(Emp_User = request.user)
@@ -151,6 +153,14 @@ def upload_document(request):
             with open(document_path, 'wb+') as destination:
                 for chunk in document.chunks():
                     destination.write(chunk)
+            file_name = os.path.splitext(document_name)[0]
+            file_extend = os.path.splitext(document_name)[1]
+            
+            file_ist =  File()
+            file_ist.File_Name = file_name
+            file_ist.File_Extend = file_extend
+            file_ist.save()
+            
             response_data = {
                 'status': 'success',
                 'document_name': document.name,
@@ -189,3 +199,4 @@ class SendEmailView(View):
         
         except Exception as e:
             return HttpResponse("Failed to send email. Error: " + str(e))
+        

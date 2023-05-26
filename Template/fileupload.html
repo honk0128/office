@@ -10,10 +10,10 @@
     <h1>문서 작성</h1>
     <form method="post" enctype="multipart/form-data">
       <label for="document-title">제목:</label><br />
-      <input type="text" id="document-title" name="document-title" /><br />
+      <input type="text" id="document-title" name="Doc_Title" /><br />
 
       <label for="position">문서유형:</label><br />
-      <select id="doc_type" name="doc_type">
+      <select id="doc_type" name="Doc_Type">
         <option value="">유형 선택</option>
         {% for doc_type in document_types %}
         <option value="{{ doc_type }}">{{ doc_type }}</option>
@@ -21,10 +21,10 @@
       ><br />
 
       <label for="author-name">작성자 이름:</label><br />
-      <input type="text" id="author-name" name="author-name" /><br />
+      <input type="text" id="author-name" name="Doc_Sender" /><br />
 
       <label for="position">직급:</label><br />
-      <select id="position" name="position">
+      <select id="position" name="">
         <option value="">직급 선택</option>
         {% for position in positions %}
         <option value="{{ position }}">{{ position }}</option>
