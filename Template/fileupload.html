@@ -9,6 +9,17 @@
   <body>
     <h1>문서 작성</h1>
     <form method="post" enctype="multipart/form-data">
+      <!-- You may want to remove this or set this value server-side -->
+      <input type="hidden" id="doc-id" name="Doc_ID" value="1" />
+
+      <!-- Set the department server-side -->
+      <input
+        type="hidden"
+        id="doc-dept"
+        name="Doc_Dept"
+        value="{{ user.Emp_Dept }}"
+      />
+
       <label for="document-title">제목:</label><br />
       <input type="text" id="document-title" name="Doc_Title" /><br />
 
@@ -23,13 +34,11 @@
       <label for="author-name">작성자 이름:</label><br />
       <input type="text" id="author-name" name="Doc_Sender" /><br />
 
-      <label for="position">직급:</label><br />
-      <select id="position" name="">
-        <option value="">직급 선택</option>
-        {% for position in positions %}
-        <option value="{{ position }}">{{ position }}</option>
-        {% endfor %}</select
-      ><br />
+      <label for="receiver-name">수신자 이름:</label><br />
+      <input type="text" id="receiver-name" name="Doc_Receiver" /><br />
+
+      <!-- Set the document state server-side -->
+      <input type="hidden" id="doc-state" name="Doc_State" value="2" />
 
       <label for="document-content">문서 내용:</label><br />
       <textarea id="document-content" name="document-content"></textarea><br />
@@ -38,26 +47,6 @@
       <input type="submit" value="Upload" />
     </form>
 
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Success!</h2>
-        <p>File uploaded successfully.</p>
-      </div>
-    </div>
-
-    <script>
-      var successPage = new URLSearchParams(window.location.search).get(
-        'success_page'
-      );
-      if (successPage === 'true') {
-        $('#myModal').show();
-      }
-
-      // Close modal when 'x' button is clicked
-      $('.close').on('click', function () {
-        $('#myModal').hide();
-      });
-    </script>
+    <!-- Rest of your HTML... -->
   </body>
 </html>
