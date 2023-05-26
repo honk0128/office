@@ -18,6 +18,7 @@ class Document(models.Model):
     Doc_Title = models.CharField(max_length = 50)
     Doc_Type = models.IntegerField()
     Doc_State = models.IntegerField()
+    Doc_Content = models.TextField(default="")
 
     def __str__(self):
         return self.Doc_Title

@@ -15,6 +15,7 @@ from Mail import models as Mail
 from Emp import models as Emp
 from Document.models import File
 from Emp.models import Employee, Department
+from Document.forms import DocumentForm
 
 def findUser(request):
     return Emp.Employee.objects.get(Emp_User = request.user)
@@ -199,4 +200,5 @@ class SendEmailView(View):
         
         except Exception as e:
             return HttpResponse("Failed to send email. Error: " + str(e))
+        
         

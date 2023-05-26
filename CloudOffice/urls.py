@@ -45,3 +45,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('upload/', include('Document.urls')),  # 'Document' is the name of your app
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ]
